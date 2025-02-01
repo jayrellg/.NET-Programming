@@ -199,7 +199,7 @@ namespace Homework__2_Polynomial_Calculator
                     maxX = temp;
                 }
 
-                // print polynomial
+                // print polynomial 
                 Console.WriteLine("\nHere is the polynomial over the domain {0} through {1}:", minX, maxX);
                 Console.WriteLine("x\t\ty");
 
