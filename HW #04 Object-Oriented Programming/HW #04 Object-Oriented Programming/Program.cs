@@ -14,6 +14,8 @@ namespace HW__04_Object_Oriented_Programming
             Console.WriteLine("Welcome to the Soccer Player Tracker!");
             Console.WriteLine("=====================================\n");
 
+            Console.WriteLine("This program lets you create soccer player objects and save 3 properties to them (Name , position , and time played)");
+
 
             List<SoccerPlayer> players = new List<SoccerPlayer>();
 
