@@ -17,19 +17,53 @@ namespace HW__06_Library
         }
 
 
-        public string CheckOut(int id)
+
+        public void CheckOut(int id)
         {
             Holding holding = holdings.Find(h => h.ID == id);
-            if (holding != null && !holding.IsCheckedOut)
+            if (holding == null || holding.IsCheckedOut)
+            {
+                Console.WriteLine("There was a problem with your request.");
+                // Holding does not exist or is already checked out
+            }
+            else
             {
                 holding.CheckOut();
-                return "You have checked it out.";
+                Console.WriteLine("You have checked it out.");
             }
-            else if (holding.IsCheckedOut == true)
-                return "This has been checkout already.";
-            else
-                return "There was an issue with your request";
+        }
 
+        public void CheckIn(int id)
+        {
+            Holding holding = holdings.Find(h => h.ID == id);
+            if (holding == null || !holding.IsCheckedOut)
+            {
+                Console.WriteLine("There was a problem with your request.");
+                // Holding does not exist or is already checked in
+            }
+            else
+            {
+                Console.WriteLine("You have checked it in.");
+                holding.CheckIn();
+            }
+        }
+
+
+        public void ListAll()
+        {
+            List<Holding> checkedOutHoldings = holdings.FindAll(h => h.IsCheckedOut);
+            List<Holding> checkedInHoldings = holdings.FindAll(h => !h.IsCheckedOut);
+
+
+            HoldingsWriter.PrintHoldings(checkedOutHoldings, checkedInHoldings);
+        }
+
+        public void GetStats()
+        {
+            int checkedOut = holdings.FindAll(h => h.IsCheckedOut).Count;
+            int available = holdings.Count - checkedOut;
+            Console.WriteLine($"{"Available",-15}{available}");
+            Console.WriteLine($"{"Checked out",-15}{checkedOut}");
         }
 
 

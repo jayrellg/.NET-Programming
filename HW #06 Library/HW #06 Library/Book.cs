@@ -15,11 +15,17 @@ namespace HW__06_Library
             get { return copyrightYear; }
             set
             {
-                if (value >= 1800 && value <= 2025)
-                    copyrightYear = value;
-                else
-                    throw new ArgumentException("Invalid year");
+                while (value < 1800 || value > 2025)
+                {
+                    Console.WriteLine("Invalid year, must be between 1800 and 2025. Please enter again:");
+                    if (!int.TryParse(Console.ReadLine(), out value))
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid year:");
+                    }
+                }
+                copyrightYear = value;
             }
+        
         }
 
         public Book ()
