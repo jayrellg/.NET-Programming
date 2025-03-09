@@ -21,12 +21,12 @@ namespace HW__06_Library
             IsCheckedOut = false;
         }    
 
-        public Holding(int id, string title, string description)
+        public Holding(int id, string title, string description, bool isCheckedOut)
         {
             ID = id;
             Title = title;
             Description = description;
-            IsCheckedOut = false;
+            IsCheckedOut = isCheckedOut;
         }
 
         public void CheckOut() 

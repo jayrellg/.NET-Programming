@@ -23,7 +23,7 @@ namespace HW__06_Library
             Holding holding = holdings.Find(h => h.ID == id);
             if (holding == null || holding.IsCheckedOut)
             {
-                Console.WriteLine("There was a problem with your request.");
+                Console.WriteLine("There was a problem with your request , holding does not exist or is already checked out.");
                 // Holding does not exist or is already checked out
             }
             else
@@ -38,7 +38,7 @@ namespace HW__06_Library
             Holding holding = holdings.Find(h => h.ID == id);
             if (holding == null || !holding.IsCheckedOut)
             {
-                Console.WriteLine("There was a problem with your request.");
+                Console.WriteLine("There was a problem with your request, holding does not exist or is already checked in.");
                 // Holding does not exist or is already checked in
             }
             else
@@ -62,14 +62,10 @@ namespace HW__06_Library
         {
             int checkedOut = holdings.FindAll(h => h.IsCheckedOut).Count;
             int available = holdings.Count - checkedOut;
+            Console.WriteLine("Here are the library's availability stats:");
             Console.WriteLine($"{"Available",-15}{available}");
             Console.WriteLine($"{"Checked out",-15}{checkedOut}");
         }
-
-
-
-
-
 
 
     }

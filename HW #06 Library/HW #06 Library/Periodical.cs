@@ -15,7 +15,7 @@ namespace HW__06_Library
             Date = "";
         }
 
-        public Periodical(int id, string title, string description, string date) : base(id, title, description)
+        public Periodical(int id, string title, string description, bool isCheckedOut, string date) : base(id, title, description, isCheckedOut)
         {
             Date = date;
         }

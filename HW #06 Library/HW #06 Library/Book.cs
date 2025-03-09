@@ -34,7 +34,7 @@ namespace HW__06_Library
             Author = "";
         }
 
-        public Book(int id, string title, string description, int year, string author) : base(id, title, description)
+        public Book(int id, string title, string description, bool isCheckedOut, int year, string author) : base(id, title, description, isCheckedOut)
         {
             CopyrightYear = year;
             Author = author;

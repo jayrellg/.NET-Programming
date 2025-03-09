@@ -34,7 +34,8 @@
                         int bookYear = int.Parse(Console.ReadLine());
                         Console.Write("Enter Author: ");
                         string bookAuthor = Console.ReadLine();
-                        library.AddHolding(new Book(bookId, bookTitle, bookDesc, bookYear, bookAuthor));
+                        library.AddHolding(new Book(bookId, bookTitle, bookDesc, false, bookYear, bookAuthor)); // Hard code CheckedOut Status to be initially false,
+                                                                                                                // since we never ask the user what the status is
                         break;
                     case "3":
                         Console.Write("Enter ID Number: ");
@@ -45,7 +46,7 @@
                         string periodicalDesc = Console.ReadLine();
                         Console.Write("Enter Date: ");
                         string periodicalDate = Console.ReadLine();
-                        library.AddHolding(new Periodical(periodicalId, periodicalTitle, periodicalDesc, periodicalDate));
+                        library.AddHolding(new Periodical(periodicalId, periodicalTitle, periodicalDesc,false, periodicalDate));
                         break;
                     case "4":
                         Console.Write("Enter the ID Number of the holding to reserve: ");
@@ -61,7 +62,7 @@
                         library.GetStats();
                         break;
                     case "7":
-                        Console.WriteLine("Thank you for using this program.");
+                        Console.WriteLine("\nThank you for using this program.");
                         return;
                     default:
                         Console.WriteLine("Invalid choice, please try again.");
