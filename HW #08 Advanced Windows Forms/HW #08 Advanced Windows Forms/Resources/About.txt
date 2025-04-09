@@ -1,0 +1,21 @@
+Application: Soccer Manager
+Version: 1.0
+Developed by: Jayrell Garcia
+This application allows you to manage soccer player data.
+
+HOW TO USE
+
+Adding a Player:
+-Insert Name (Required), Position (Required), Number , and Minutes played for soccer players. 
+-Add an image to associate it with a specific player. 
+-Click ‘Save’.
+-(Optional) Check the box to only edit players with Jersey Number >11 within the Data Grid.
+
+
+Edit Soccer Players using Gridview:
+-Click ‘Edit Players’
+-Click on desired cell to change value. Click ‘Save’ to apply changes. 
+-Double click column header to sort by chosen column. (Toggles b/w Ascending and Descending)
+-'RIGHT CLICK' to find specific value.
+
+
