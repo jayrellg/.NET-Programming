@@ -28,8 +28,7 @@ namespace HW__10_Advanced_databases_with_EF_Core.Models
 
         public override string ToString()
         {
-            int playerCount = Players?.Count ?? 0;
-            return $"{Id}: {Name} (Founded: {YearFounded})";
+            return $"ID : {Id} | {Name} (Founded: {YearFounded})";
         }
 
     }
