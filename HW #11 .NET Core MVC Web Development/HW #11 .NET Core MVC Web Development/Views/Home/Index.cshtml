@@ -1,0 +1,76 @@
+﻿@model TemperatureConverterModel 
+@{
+    ViewData["Title"] = "Temperature Converter";
+}
+
+
+<div class="text-center">
+    <h2>@ViewData["Title"]</h2>
+    <p>This application converts the temparature bewteen Celsius and Fahrenheit</p>
+    <p>Use controls below to convert from one scale to another.</p>
+
+        <form asp-controller ="Home" asp-action="Index" method="Post">
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-group">
+                <label asp-for="OriginalTemperature" class="form-label">Original Temperature</label>
+                <input asp-for="OriginalTemperature" class="form-control" />
+            </div>
+
+            @{
+                string celsiusCheck = "checked";
+                string fahrenheitCheck = "";
+                if (Model != null)
+                { 
+                if(Model.Scale == "Celsius")
+                    {
+                        celsiusCheck = "checked";
+                        fahrenheitCheck = "";
+                    }
+                    else
+                    {
+                        celsiusCheck = "";
+                        fahrenheitCheck = "checked";
+                    }
+                }
+            }
+
+
+            <div class="form-group">
+                <label>Convert To:</label><br />
+                <input type="radio" name="Scale" value="Celsius" @celsiusCheck />Celsius
+                <input type="radio" name="Scale" value="Fahrenheit" @fahrenheitCheck />Fahrenheit
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Convert</button>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Clear</a>
+            </div>
+
+        </form>
+
+            <div class="form-group">
+                <label asp-for="ConvertedTemperature" class="form-label">Converted Temperature</label>
+                @{ //Format output
+                    string? formattedResult = null;
+
+                    if (Model?.OriginalTemperature.HasValue == true)
+                    {
+                        float input = Model.OriginalTemperature.Value;
+                        float output = Model.ConvertedTemperature;
+                        string fromUnit = Model.Scale == "Celsius" ? "C" : "F";
+                        string toUnit = Model.Scale == "Celsius" ? "F" : "C";
+
+                        formattedResult = $"{input:F3} {fromUnit} is {output:F3} {toUnit}";
+                    }
+                }
+
+                <input type="text" class="form-control" readonly value="@formattedResult" />
+            </div>
+
+
+</div>
+
+
+
+

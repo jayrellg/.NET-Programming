@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Review Questions";
+}
+
+<h2>@ViewData["Title"]</h2>
+<ol>
+    <li>
+        <p><strong>Question</strong> Explain the purpose of _Layout.cshtml and _ViewStart.cshtml.</p>
+    </li>
+    <p>
+        The _Layout.cshtml file serves as the main shell for the web app displaying to the user the contents in the folder views. This file is very intuitive as it allows many elements to be defined at once , like header, navigation bar, etc, and insert more specific elements to be displayed when needed.<br /><br />
+
+
+        The _ViewStart.cshtml specifies the default layout to be used for views within a specific folder and its subfolders. It's a special view file that doesn't render HTML itself, but rather determines which layout file will be used for rendering.
+    </p>
+
+    <li>
+        <p><strong>Question</strong> Give two examples of asp tag helpers, and clearly explain the purpose of each.</p>
+    </li>
+    <p><strong>asp-for</strong>: Used to automatically bind a model property to an HTML element such as an input or label, generating the correct <code>id</code>, <code>name</code>, and current <code>value</code>.</p>
+    <p><strong>asp-controller + asp-action</strong>: 'asp-controller' is used to generate URLs that link to an action method in a specified controller and is typically used together with 'asp-action' to specify the target action method </p>
+
+    <li>
+        <p><strong>Question</strong> When using programming by convention, how do I know which view will be loaded by View() when called for a function of a controller? Give a concrete example.</p>
+    </li>
+    <p>When you call <code>return View();</code> with no arguments, the ASP.NET Core framework automatically looks for a view with the same name as the controller action method, 
+        located in a folder named after the controller. For example, if you have a HomeController and a Index action, the framework will 
+        search for a view named Index.cshtml within the Views/Home folder :</p>
+    <ul>
+        <li><strong>Controller name</strong> --> folder under <code>/Views</code></li>
+        <li><strong>Action name</strong> --> view file with that name and a <code>.cshtml</code> extension</li>
+    </ul>
+
+    <p>For example, in HomeController:</p>
+    <pre><code>public class HomeController : Controller
+{
+    public IActionResult Index()
+    {
+        // By convention, this returns /Views/Home/Index.cshtml
+        return View();
+    }
+
+    public IActionResult Questions()
+    {
+        // Likewise, this returns /Views/Home/Questions.cshtml
+        return View();
+    }
+}
+</code></pre>
+</ol>
